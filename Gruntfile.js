@@ -36,7 +36,7 @@ module.exports = function(grunt) {
           // base_path: '.',
           // sourcemap: true,
           // fullSourceMapPath: true,
-          declaration: true,
+          // declaration: true,
         }
       }
     },
