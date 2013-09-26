@@ -1,4 +1,4 @@
-exports.bnf = {
+export var bnf = {
   start: [
     ["input EOF", "return $$;"]
   ],
@@ -10,7 +10,7 @@ exports.bnf = {
     ["exp SEMICOLON", "$$ = $1;"]
   ],
   exp: [
-    ["NUMBER",           "$$ = new yy.Number(@1.first_line, @1.first_column, yytext);"],
+    ["NUMBER",           "$$ = new yy.NumberNode(@1.first_line, @1.first_column, yytext);"],
     ["VARIABLE",         "$$ = new yy.Variable(@1.first_line, @1.first_column, yytext);"],
     ["exp exp operator", "$$ = new yy.Expression(@3.first_line, @3.first_column, $1, $2, $3);"]
   ],

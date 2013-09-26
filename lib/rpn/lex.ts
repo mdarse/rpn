@@ -1,4 +1,4 @@
-exports.lex = {
+export var lex = {
   rules: [
     ["\\s+",                   "/* Skip whitespace! */"],
     ["#.*\\n",                 "/* Skip comments! */"],

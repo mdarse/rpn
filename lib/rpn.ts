@@ -1,17 +1,21 @@
-var jison = require("jison");
-var sourceMap = require("source-map");
-var lex = require("./rpn/lex").lex;
-var bnf = require("./rpn/bnf").bnf;
+/// <reference path="jison.d.ts" />
+/// <reference path="source-map.d.ts" />
+
+import jison = require('jison');
+import sourceMap = require("source-map");
+import SourceNode = sourceMap.SourceNode;
+import lex = require("./rpn/lex");
+import bnf = require("./rpn/bnf");
 
 var parser = new jison.Parser({
-  lex: lex,
-  bnf: bnf
+  lex: lex.lex,
+  bnf: bnf.bnf
 });
 
-parser.yy = require("./rpn/ast");
+parser.yy = require("./rpn/ast").AST;
 
 function getPreamble () {
-  return new sourceMap.SourceNode(null, null, null, "")
+  return new SourceNode(null, null, null, "")
     .add("var __rpn = {};\n")
     .add("__rpn._stack = [];\n")
     .add("__rpn.temp = 0;\n")
