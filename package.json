@@ -11,5 +11,9 @@
   "dependencies": {
     "jison": "~0.4.13",
     "source-map": "~0.1.29"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0"
   }
 }
