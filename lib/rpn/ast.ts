@@ -9,7 +9,7 @@ export module AST {
     return ["__rpn.push(", val, ");\n"];
   }
 
-  export class AstNode {
+  export class Node {
     _line: number;
     _column: number
     constructor(line: number, column: number) {
@@ -27,7 +27,7 @@ export module AST {
     }
   }
 
-  export class NumberNode extends AstNode {
+  export class NumberNode extends Node {
     _value: number;
     constructor(line: number, column: number, numberText: string) {
       super(line, column);
@@ -38,7 +38,7 @@ export module AST {
     }
   }
 
-  export class Variable extends AstNode {
+  export class Variable extends Node {
     _name: string;
     constructor(line: number, column: number, variableText: string) {
       super(line, column);
@@ -52,9 +52,9 @@ export module AST {
     }
   }
 
-  export class Expression extends AstNode {
-    _left: AstNode;
-    _right: AstNode;
+  export class Expression extends Node {
+    _left: Node;
+    _right: Node;
     _operator: Operator;
     constructor(line, column, operand1, operand2, operator) {
       super(line, column);
@@ -100,7 +100,7 @@ export module AST {
     }
   }
 
-  export class Operator extends AstNode {
+  export class Operator extends Node {
     symbol: string;
     constructor(line, column, operatorText) {
       super(line, column);
