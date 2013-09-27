@@ -3,7 +3,6 @@
 
 import jison = require('jison');
 import sourceMap = require("source-map");
-import SourceNode = sourceMap.SourceNode;
 import lex = require("./rpn/lex");
 import bnf = require("./rpn/bnf");
 
@@ -15,7 +14,7 @@ var parser = new jison.Parser({
 parser.yy = require("./rpn/ast").AST;
 
 function getPreamble () {
-  return new SourceNode(null, null, null, "")
+  return new sourceMap.SourceNode(null, null, null, "")
     .add("var __rpn = {};\n")
     .add("__rpn._stack = [];\n")
     .add("__rpn.temp = 0;\n")
