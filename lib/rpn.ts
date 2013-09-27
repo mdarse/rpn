@@ -43,7 +43,7 @@ function getPreamble () {
     .add("};\n");
 }
 
-exports.compile = function (input, data) {
+export function compile(input: string, data: {originalFilename: string}) {
   var expressions = parser.parse(input.toString());
   var preamble = getPreamble();
 
@@ -53,4 +53,4 @@ exports.compile = function (input, data) {
   }));
 
   return result;
-};
+}
